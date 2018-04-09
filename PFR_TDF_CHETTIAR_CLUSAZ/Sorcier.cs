@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetZombillenium
+namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Sorcier : Personnel
     {
