@@ -46,6 +46,9 @@
     <Compile Include="Attraction.cs" />
     <Compile Include="Boutique.cs" />
     <Compile Include="Darkrides.cs" />
+    <Compile Include="Demon.cs" />
+    <Compile Include="Fantome.cs" />
+    <Compile Include="LoupGarou.cs" />
     <Compile Include="Maintenance.cs" />
     <Compile Include="Monstre.cs" />
     <Compile Include="Parc.cs" />
@@ -53,7 +56,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rollercoaster.cs" />
+    <Compile Include="Sorcier.cs" />
     <Compile Include="Spectacle.cs" />
+    <Compile Include="Type.cs" />
+    <Compile Include="Vampire.cs" />
+    <Compile Include="Zombie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

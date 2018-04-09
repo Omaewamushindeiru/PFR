@@ -26,6 +26,8 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.ouvert = ouvert;
         }
 
+        public List<Monstre> Equipe { get => equipe; set => equipe = value; }
+
         public override string ToString()
         {
             return " ";
