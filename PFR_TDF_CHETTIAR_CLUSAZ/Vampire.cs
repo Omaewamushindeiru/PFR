@@ -14,9 +14,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             this.indiceLuminosite = indiceLuminosite;
         }
-        public Vampire(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
+        public Vampire(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, float indiceLuminosite) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
         {
-            this.indiceLuminosite = -1;
+            this.indiceLuminosite = indiceLuminosite;
+            this.Affectation = null;
+
+        }
+        public override string ToString()
+        {
+            return base.ToString() + " Il est de type Vampire et son indice de luminosite est de " + indiceLuminosite;
         }
     }
 }

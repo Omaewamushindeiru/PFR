@@ -16,10 +16,21 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.degreDecomposition = degreDecomposition;
             this.teint = teint;
         }
+        public Zombie(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, CouleurZ teint, int degreDecomposition) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
+        {
+            this.degreDecomposition = degreDecomposition;
+            this.teint = teint;
+            this.Affectation = null;
+        }
+
         public Zombie(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
         {
 
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + " Il est de type Zombie, son degré de décomposition est de " + degreDecomposition + " et son teint est " + teint;
+        }
     }
 }

@@ -15,9 +15,14 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.force = force;
         }
 
-        public Demon(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
+        public Demon(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte,int force) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
         {
-            this.force = -1;
+            this.force = force;
+            this.Affectation = null;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + " Il est de type Demon est sa force est de " + force;
         }
     }
 }

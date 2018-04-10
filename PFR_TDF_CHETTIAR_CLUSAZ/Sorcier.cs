@@ -22,6 +22,11 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
         }
 
+        public override string ToString()
+        {
+
+            return base.ToString() + " Il est de type Sorcier et son grade est " + tatouage; // rajouter la liste des pouvoirs
+        }
 
 
     }

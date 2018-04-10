@@ -12,5 +12,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
 
         }
+
+        public Fantome(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
+        {
+            this.Affectation = null;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " Il est de type Fantome";
+        }
     }
 }

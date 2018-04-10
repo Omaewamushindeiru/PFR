@@ -14,7 +14,17 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             this.indiceCruaute = indiceCruaute;
         }
-        public LoupGarou(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation) { }
+        public LoupGarou(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte,float indiceCruaute) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
+        {
+            this.indiceCruaute = indiceCruaute;
+            this.Affectation = null;
+
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " Il est de type LoupGarou et son indice de cruaute est de " + indiceCruaute;
+        }
 
     }
 }
