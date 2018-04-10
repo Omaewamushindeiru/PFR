@@ -8,20 +8,16 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Rollercoaster : Attraction
     {
-        public enum TypeCategorie
-        {
-            assise, inversee, bobsleigh
-        }
 
         private int tailleMin;
         private int ageMin;
-        private TypeCategorie categorie;
+        private string categorie;
 
-        public Rollercoaster(int taille, int age, TypeCategorie type, int identifiant, string nom, int nbMinMonstre, bool ouvert):base(identifiant, nom, nbMinMonstre, ouvert)
+        public Rollercoaster(int tailleMin, int ageMin, string categorie, int identifiant, string nom, int nbMinMonstre, bool ouvert , string spec):base(identifiant, nom, nbMinMonstre, ouvert, spec)
         {
-            tailleMin = taille;
-            ageMin = age;
-
+            this.tailleMin = tailleMin;
+            this.ageMin = ageMin;
+            this.categorie = categorie;
         }
 
     }

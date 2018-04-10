@@ -9,13 +9,14 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Parc
     {
-        private List<Attraction> attractions;
-        private List<Personnel> tousLePersonnel;
+        private List<Attraction> Attractions;
+        private List<Personnel> Personnel;
+
 
         public Parc(List<Attraction> attractions, List<Personnel> tousLePersonnel)
         {
-            this.attractions = new List<Attraction>();
-            this.tousLePersonnel = new List<Personnel>();
+            this.Attractions = new List<Attraction>();
+            this.Personnel = new List<Personnel>();
         }
 
        static void AffecterAUneAttraction(List<Attraction> listeAttractions,Monstre monMonstre)
@@ -84,6 +85,47 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             {
 
             }
+        }
+
+        public static List<Attraction> ChargerFichierAttraction(string nomDuFichier)
+        {
+            List<Attraction> listeAttractions = new List<Attraction>();
+            try
+            {
+                StreamReader fichier = new StreamReader(nomDuFichier);
+                string ligne = fichier.ReadLine();
+                while (ligne != null)
+                {
+
+                    string[] temp = ligne.Split(';');       // to lower ?
+                    if (temp[1].Length == 3)
+                        switch (temp[0])
+                        {
+                            case "Boutique":
+                                listeAttractions.Add();
+                                break;
+
+                            case "DarkRide":
+
+                                break;
+
+                            case "RollerCoaster":
+
+                                break;
+
+                            case "Spectacles":
+
+                                break;
+
+                        }
+                }
+
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return listeAttractions;
         }
     }
 

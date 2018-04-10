@@ -17,16 +17,17 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         private bool ouvert;
         private Maintenance maintenance;
 
-        public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert)
+        private string spec;
+
+        public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec)
         {
             this.equipe = new List<Monstre>();
             this.identifiant = identifiant;
             this.nbMinMonstre = nbMinMonstre;
             this.nom = nom;
             this.ouvert = ouvert;
+            this.spec = spec;
         }
-
-        public List<Monstre> Equipe { get => equipe; set => equipe = value; }
 
         public override string ToString()
         {
