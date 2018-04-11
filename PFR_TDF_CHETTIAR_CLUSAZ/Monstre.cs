@@ -28,9 +28,16 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             set { affectation = value; }
         }
 
+        public int Cagnotte { get => cagnotte; set => cagnotte = value; }
+
         public override string ToString()
         {
             return base.ToString() + " Monstre : Il est affecté à " + affectation + " sa cagnotte s'élève à " + cagnotte;
+        }
+
+        public void ChangerCagnotte( int valeur )
+        {
+            cagnotte += valeur;
         }
     }
 

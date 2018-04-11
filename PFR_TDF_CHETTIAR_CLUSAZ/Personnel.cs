@@ -14,7 +14,9 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         private string prenom;
         private TypeSexe sexe;
 
-        public Personnel(int matricule, string nom, string prenom, TypeSexe sexe, string fonction) 
+        public string Fonction { get => fonction; set => fonction = value; }
+
+        public Personnel(int matricule, string nom, string prenom, TypeSexe sexe, string fonction)
         {
             this.fonction = fonction;
             this.matricule = matricule;
@@ -27,7 +29,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             return base.ToString() + " Personnel : Le matricule de ce personnel est :" + matricule + " Il s'appelle " + nom + " " + prenom + " et est de sexe " + sexe + " et sa fonction est " + fonction;
         }
+
+        public void ChangerFonction(string NouvelleFonction)
+        {
+            fonction = NouvelleFonction;
+        }
+        
+           
+        }
     }
 
 
-}
+
