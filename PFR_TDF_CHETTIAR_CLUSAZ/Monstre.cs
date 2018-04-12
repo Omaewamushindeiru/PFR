@@ -32,14 +32,60 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.cagnotte = int.Parse(ligne[6]);
         }
 
-        public void AffecterAUneAttraction(int id, Parc parc)
+        public bool Affecter(int idAttraction, Parc parc)
         {
-<<<<<<< HEAD
-            //for(int i = 0; i< )
-=======
-            //checker si le type de monstre recommandé
->>>>>>> 4c42bf55e68296fe5f295a3b4f570ca5e1031b88
+            for (int i = 0; i < parc.Attractions.Count(); i++) ;
+            foreach(Attraction att in parc.Attractions)
+                if((att.Identifiant == idAttraction))
+                    if (this.isOfSpec(att))
+                    {
+                        this.affectation = att;
+                        att.Equipe.Add(this);
+                        return true;
+                    }
+            return false;
         }
+        public void Desaffecter()
+        {
+            affectation.Equipe.Remove(this);
+            affectation = null;
+        }
+        public bool isOfSpec(Attraction attraction)
+        {
+            foreach (string type in attraction.Spec)
+            {
+                switch (type)
+                {
+                    case "zombie":
+                        if (!(this is Zombie)) return false;
+                        break;
+
+                    case "fantome":
+                        if (!(this is Fantome)) return false;
+                        break;
+
+                    case "vampire":
+                        if (!(this is Vampire)) return false;
+                        break;
+
+                    case "loupgarou":
+                        if (!(this is LoupGarou)) return false;
+                        break;
+
+                    case "demon":
+                        if (!(this is Demon)) return false;
+                        break;
+                }
+            }
+            return true;
+        }
+
+        public bool isAffected()
+        {
+            return affectation == null;
+        }
+
+
 
         public override string ToString()
         {
