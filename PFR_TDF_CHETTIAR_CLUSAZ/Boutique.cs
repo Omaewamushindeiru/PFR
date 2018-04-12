@@ -15,7 +15,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.marchandise = marchandise;
         }
 
-        public Boutique(string[] ligne, Parc parc) : base(ligne, parc)
+        public Boutique(string[] ligne) : base(ligne)
         {
             
         }

@@ -9,8 +9,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Attraction
     {
-        private Parc parc;
-
         private int identifiant;
         private string nom;
 
@@ -28,7 +26,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             set { this.equipe = value; }
         }
 
-        public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec, Parc parc)
+        public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec)
         {
             this.equipe = new List<Monstre>();
             this.identifiant = identifiant;
@@ -36,10 +34,9 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.nom = nom;
             this.ouvert = ouvert;
             this.spec = new List<string>(spec.Split(' '));
-            this.parc = parc;
         }
 
-        public Attraction(string[] ligne, Parc parc)
+        public Attraction(string[] ligne)
         {
             this.equipe = new List<Monstre>();
             try { this.identifiant = int.Parse(ligne[1]); }
@@ -49,7 +46,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.nom = ligne[2];
             this.ouvert = false;
             this.spec = new List<string>(ligne[5].Split(' '));
-            this.parc = parc;
         }
 
         public override string ToString()
