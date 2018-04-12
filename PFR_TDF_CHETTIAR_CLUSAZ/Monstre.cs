@@ -34,7 +34,11 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         public void AffecterAUneAttraction(int id, Parc parc)
         {
+<<<<<<< HEAD
             //for(int i = 0; i< )
+=======
+            //checker si le type de monstre recommandé
+>>>>>>> 4c42bf55e68296fe5f295a3b4f570ca5e1031b88
         }
 
         public override string ToString()
@@ -52,7 +56,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             }
             if (cagnotte > 500)
             {
-
+                //checker si il y a assez de monde sur l'attraction
             }
         }
     }
