@@ -13,12 +13,12 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         private bool disponible;
         private Spectacle spectacle;
 
-        public Salle (string nom, int capacite, bool disponible)
+        public Salle (string nom, int capacite, bool disponible, Spectacle spectacle)
         {
             this.nom = nom;
             this.capacite = capacite;
             this.disponible = disponible;
-            spectacle = null;
+            this.spectacle = spectacle;
         }
     }
 }

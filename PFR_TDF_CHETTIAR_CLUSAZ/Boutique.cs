@@ -8,11 +8,16 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Boutique : Attraction
     {
-        private string marchandise;
+        private TypeBoutique marchandise;
 
-        public Boutique(string marchandise, int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec) : base(identifiant, nom, nbMinMonstre, ouvert, spec)
+        public Boutique(TypeBoutique marchandise, int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec) : base(identifiant, nom, nbMinMonstre, ouvert, spec)
         {
             this.marchandise = marchandise;
+        }
+
+        public Boutique(string[] ligne, Parc parc) : base(ligne, parc)
+        {
+            
         }
     }
 }

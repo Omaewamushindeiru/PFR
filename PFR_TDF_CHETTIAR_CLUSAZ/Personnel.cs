@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
-    class Personnel : Parc
+    class Personnel
     {
         private string fonction;
         private int matricule;
