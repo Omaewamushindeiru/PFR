@@ -55,6 +55,9 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
                     switch (temp[0].ToLower())
                     {
+                        case "sorcier":
+                            ListePersonnel.Add(new Sorcier(temp));
+                            break;
                         case "monstre":
                             ListePersonnel.Add(new Monstre(temp));
                             break;
@@ -158,6 +161,64 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             return true;
         }
+        public static bool OnlySorcier(Personnel sorcier)
+        {
+            if (sorcier is Sorcier)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyMonstre(Personnel monstre)
+        {
+            if(monstre is Monstre)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyDemon(Personnel demon)
+        {
+            if (demon is Demon)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyFantome(Personnel fantome)
+        {
+            if (fantome is Fantome)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyLoupGarou(Personnel loupGarou)
+        {
+            if (loupGarou is LoupGarou)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyVampire(Personnel vampire)
+        {
+            if (vampire is Vampire)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static bool OnlyZombie(Personnel zombie)
+        {
+            if (zombie is Zombie)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
+
     }
 
 }
