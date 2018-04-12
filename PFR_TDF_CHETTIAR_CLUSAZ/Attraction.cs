@@ -22,6 +22,12 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         private List<string> spec;
 
+        public List<Monstre> Equipe
+        {
+            get { return this.equipe; }
+            set { this.equipe = value; }
+        }
+
         public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec, Parc parc)
         {
             this.equipe = new List<Monstre>();
@@ -48,7 +54,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         public override string ToString()
         {
-            return "MONSTRE ID:" + identifiant + " " + nom + " NbMonstreMIN:" + nbMinMonstre + " SPEC: (" + string.Join(";",spec.ToArray()) + ")";
+            return "MONSTRE ID:" + identifiant + " " + nom + " NbMonstreMIN:" + nbMinMonstre + " SPEC: (" + string.Join(";", spec.ToArray()) + ")";
         }
 
 

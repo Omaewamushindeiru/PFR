@@ -38,6 +38,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         public void ChangerCagnotte( int valeur )
         {
             cagnotte += valeur;
+            
+            if( cagnotte < 50)
+            {
+               // fonction affecter désaffecter
+            }
+            if (cagnotte > 500)
+            {
+
+            }
         }
     }
 
