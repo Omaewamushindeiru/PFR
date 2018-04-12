@@ -9,6 +9,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Attraction
     {
+        #region attribus
         private int identifiant;
         private string nom;
 
@@ -20,12 +21,30 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         private List<string> spec;
 
+        #region encapsulation
+        public int Identifiant
+        {
+            get
+            {
+                return identifiant;
+            }
+        }
         public List<Monstre> Equipe
         {
-            get { return this.equipe; }
-            set { this.equipe = value; }
+            get { return equipe; }
         }
+        public List<string> Spec
+        {
+            get
+            {
+                return spec;
+            }
+        }
+        #endregion
 
+        #endregion
+
+        #region constructeur
         public Attraction(int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec)
         {
             this.equipe = new List<Monstre>();
@@ -35,7 +54,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.ouvert = ouvert;
             this.spec = new List<string>(spec.Split(' '));
         }
-
         public Attraction(string[] ligne)
         {
             this.equipe = new List<Monstre>();
@@ -47,12 +65,12 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.ouvert = false;
             this.spec = new List<string>(ligne[5].Split(' '));
         }
+        #endregion
 
         public override string ToString()
         {
             return "|ATTRACTION ID:" + identifiant + "|" + nom + "|NbMonstreMIN:" + nbMinMonstre + "|SPEC: (" + string.Join(";", spec.ToArray()) + ")|";
         }
-
 
     }
 }
