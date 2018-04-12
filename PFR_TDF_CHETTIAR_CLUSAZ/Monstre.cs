@@ -33,6 +33,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         }
         static void AffecterAUneAttraction(List<Attraction> listeAttractions, Parc monParc)
         {
+            //checker si le type de monstre recommandé
         }
         public int Cagnotte { get => cagnotte; set => cagnotte = value; }
 
@@ -51,7 +52,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             }
             if (cagnotte > 500)
             {
-
+                //checker si il y a assez de monde sur l'attraction
             }
         }
     }
