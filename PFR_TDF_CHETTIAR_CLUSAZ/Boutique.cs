@@ -10,6 +10,14 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
     {
         private TypeBoutique marchandise;
 
+        public TypeBoutique Marchandise
+        {
+            get
+            {
+                return marchandise;
+            }
+        }
+
         public Boutique(TypeBoutique marchandise, int identifiant, string nom, int nbMinMonstre, bool ouvert, string spec) : base(identifiant, nom, nbMinMonstre, ouvert, spec)
         {
             this.marchandise = marchandise;

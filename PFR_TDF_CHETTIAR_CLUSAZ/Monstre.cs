@@ -35,8 +35,8 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         public bool Affecter(int idAttraction, Parc parc)
         {
             for (int i = 0; i < parc.Attractions.Count(); i++) ;
-            foreach(Attraction att in parc.Attractions)
-                if((att.Identifiant == idAttraction))
+            foreach (Attraction att in parc.Attractions)
+                if ((att.Identifiant == idAttraction))
                     if (this.isOfSpec(att))
                     {
                         this.affectation = att;
@@ -45,11 +45,17 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
                     }
             return false;
         }
-        public void Desaffecter()
+        public bool Desaffecter()
         {
-            affectation.Equipe.Remove(this);
-            affectation = null;
+            if (isAffected())
+            {
+                affectation.Equipe.Remove(this);
+                affectation = null;
+                return true;
+            }
+            return false;
         }
+
         public bool isOfSpec(Attraction attraction)
         {
             foreach (string type in attraction.Spec)
@@ -92,17 +98,29 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             return base.ToString() + " MONSTRE AFFECTATION:" + affectation + " CACGNOTTE:" + cagnotte;
         }
 
-        public void ChangerCagnotte( int valeur )
+        public void ChangerCagnotte(int valeur, Parc p)
         {
             cagnotte += valeur;
-            
-            if( cagnotte < 50)
+            int idBoutique;
+            if (cagnotte < 50)
             {
-               // fonction affecter désaffecter
+                Desaffecter();
+                foreach (Boutique bou in p.Attractions)
+                {
+                    if (bou.Marchandise == TypeBoutique.barbeAPapa)
+                    {
+                        idBoutique = bou.Identifiant;
+                        Affecter(idBoutique, p);
+                        break;
+                    }
+                }
             }
             if (cagnotte > 500)
             {
-                //checker si il y a assez de monde sur l'attraction
+                if (affectation.NbMinMonstre < affectation.Equipe.Count)
+                {
+                    Desaffecter();
+                }
             }
         }
     }

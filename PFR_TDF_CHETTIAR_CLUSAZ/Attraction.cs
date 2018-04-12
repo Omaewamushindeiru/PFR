@@ -40,6 +40,13 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
                 return spec;
             }
         }
+        public int NbMinMonstre
+        {
+            get
+            {
+                return nbMinMonstre;
+            }
+        }
         #endregion
 
         #endregion
