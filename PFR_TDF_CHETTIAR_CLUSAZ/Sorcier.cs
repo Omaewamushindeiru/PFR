@@ -21,7 +21,12 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         public Sorcier(int matricule, string nom, string prenom, TypeSexe sexe, string fonction) : base(matricule, nom, prenom, sexe, fonction)
         {
         }
+        public Sorcier (string[] ligne ,int matricule, string nom, string prenom, TypeSexe sexe, string fonction) : base(matricule, nom, prenom, sexe, fonction)
+        {
+            this.tatouage = (Grade)Enum.Parse(typeof(Grade), ligne[6]);
+            this.pouvoirs = ligne[7].Split('-').ToList<string>();
 
+        }
         public override string ToString()
         {
 
