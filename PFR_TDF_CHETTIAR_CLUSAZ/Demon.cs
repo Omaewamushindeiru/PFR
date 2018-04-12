@@ -20,7 +20,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.force = force;
             this.Affectation = null;
         }
-        public Demon(string[] ligne, int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
+        public Demon(string[] ligne):base(ligne)
         {
             this.force = int.Parse(ligne[8]);
         }

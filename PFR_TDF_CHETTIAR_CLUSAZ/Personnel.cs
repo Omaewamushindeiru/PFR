@@ -24,6 +24,14 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.prenom = prenom;
             this.sexe = sexe;
         }
+        public Personnel(string[] ligne)
+        {
+            this.matricule = int.Parse(ligne[1]);
+            this.nom = ligne[2];
+            this.prenom = ligne[3];
+            this.sexe = (TypeSexe)Enum.Parse(typeof(TypeSexe), ligne[4]);
+            this.fonction = ligne[5];
+        }
 
         public override string ToString()
         {

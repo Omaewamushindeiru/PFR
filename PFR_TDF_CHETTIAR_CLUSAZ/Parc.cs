@@ -9,29 +9,22 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Parc
     {
-        private List<Attraction> Attractions;
-        private List<Personnel> Personnel;
+        private List<Attraction> attractions;
+        private List<Personnel> personnel;
 
 
         public Parc(List<Attraction> attractions, List<Personnel> tousLePersonnel)
         {
-            this.Attractions = new List<Attraction>();
-            this.Personnel = new List<Personnel>();
+            this.attractions = new List<Attraction>();
+            this.personnel = new List<Personnel>();
         }
-
-       static void AffecterAUneAttraction(List<Attraction> listeAttractions,Monstre monMonstre)
+        public List<Attraction> Attractions
         {
-            for(int i =0; i < listeAttractions.Count(); i++)
-            {
-                if (listeAttractions[i] == monMonstre.Affectation)
-                {
-                    listeAttractions[i].Equipe.Add(monMonstre);
-
-                }
-            }
+            get { return attractions; }
+            set { attractions = value; }
         }
 
-       static void ChargerFichier(string nomDuFichier, List<Personnel> personnel)
+        static void ChargerFichier(string nomDuFichier, List<Personnel> personnel)
         {
             try
             {
@@ -130,5 +123,5 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
     }
 
 }
-    
+
 

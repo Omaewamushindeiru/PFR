@@ -21,16 +21,19 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.cagnotte = cagnotte;
             this.affectation = null;
         }
-        public Monstre(string[] ligne, int matricule, string nom, string prenom, TypeSexe sexe, string fonction) : base(matricule, nom, prenom, sexe, fonction)
+        public Monstre(string[] ligne) : base(ligne)
         {
             this.cagnotte = int.Parse(ligne[6]);
+            AffecterAUneAttraction();
         }
         public Attraction Affectation
         {
             get { return affectation; }
             set { affectation = value; }
         }
-
+        static void AffecterAUneAttraction(List<Attraction> listeAttractions, Parc monParc)
+        {
+        }
         public int Cagnotte { get => cagnotte; set => cagnotte = value; }
 
         public override string ToString()
