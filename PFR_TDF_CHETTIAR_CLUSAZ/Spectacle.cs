@@ -16,7 +16,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.salle = salle;
             this.horraire = horraire;
         }
-
         public Spectacle (string[] ligne, Parc parc) : base (ligne)
         {
             Salle salle = new Salle(ligne[6],int.Parse(ligne[7]),false,this);

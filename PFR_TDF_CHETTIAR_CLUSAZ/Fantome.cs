@@ -12,12 +12,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
 
         }
-
         public Fantome(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
         {
             this.Affectation = null;
         }
-
         public Fantome(string [] ligne) : base(ligne)
         {
 

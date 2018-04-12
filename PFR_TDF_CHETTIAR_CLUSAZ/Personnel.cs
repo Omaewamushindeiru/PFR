@@ -8,13 +8,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Personnel
     {
+        #region attribus
         private string fonction;
         private int matricule;
         private string nom;
         private string prenom;
         private TypeSexe sexe;
+        #endregion
 
-
+        #region constructeur
         public Personnel(int matricule, string nom, string prenom, TypeSexe sexe, string fonction)
         {
             this.fonction = fonction;
@@ -31,6 +33,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.sexe = (TypeSexe)Enum.Parse(typeof(TypeSexe), ligne[4]);
             this.fonction = ligne[5];
         }
+        #endregion
 
         public override string ToString()
         {

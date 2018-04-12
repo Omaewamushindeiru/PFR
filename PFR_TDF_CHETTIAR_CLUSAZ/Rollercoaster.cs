@@ -19,7 +19,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.ageMin = ageMin;
             this.categorie = categorie;
         }
-
         public Rollercoaster(string[] ligne) : base(ligne)
         {
             categorie = (TypeCategorie)Enum.Parse(typeof(TypeCategorie), ligne[6]);

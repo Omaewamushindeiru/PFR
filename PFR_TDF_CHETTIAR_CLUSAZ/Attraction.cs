@@ -72,5 +72,13 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             return "|ATTRACTION ID:" + identifiant + "|" + nom + "|NbMonstreMIN:" + nbMinMonstre + "|SPEC: (" + string.Join(";", spec.ToArray()) + ")|";
         }
 
+        public void AddSpec(string type)
+        {
+            spec.Add(type);
+        }
+        public void RemoveSpec(string type)
+        {
+            spec.Remove(type);
+        }
     }
 }

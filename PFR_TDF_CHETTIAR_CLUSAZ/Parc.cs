@@ -25,6 +25,30 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
                 salles = value;
             }
         }
+        public List<Attraction> Attractions
+        {
+            get
+            {
+                return attractions;
+            }
+
+            set
+            {
+                attractions = value;
+            }
+        }
+        public List<Personnel> Personnel
+        {
+            get
+            {
+                return personnel;
+            }
+
+            set
+            {
+                personnel = value;
+            }
+        }
 
         public Parc(List<Attraction> attractions, List<Personnel> tousLePersonnel, List<Salle> salles)
         {
@@ -32,7 +56,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.personnel = tousLePersonnel;
             this.Salles = salles;
         }
-
         public Parc(string nomDuFichier)
         {
             salles = new List<Salle>();
