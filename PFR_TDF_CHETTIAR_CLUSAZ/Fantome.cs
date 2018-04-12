@@ -18,6 +18,11 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.Affectation = null;
         }
 
+        public Fantome(string [] ligne) : base(ligne)
+        {
+
+        }
+
         public override string ToString()
         {
             return base.ToString() + " Il est de type Fantome";

@@ -10,6 +10,11 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("test");
+            Parc p = new Parc("Listing.csv");
+            p.AfficherAttractionsConsole(Parc.NoFilter);
+            p.AfficherPersonnelConsole(Parc.NoFilter);
+            Console.ReadKey();
         }
     }
 }

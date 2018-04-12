@@ -8,7 +8,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class LoupGarou : Monstre
     {
-        private float indiceCruaute;
+        private double indiceCruaute;
 
         public LoupGarou(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation, float indiceCruaute) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
         {
@@ -19,6 +19,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.indiceCruaute = indiceCruaute;
             this.Affectation = null;
 
+        }
+        public LoupGarou(string[] ligne): base(ligne)
+        {
+            this.indiceCruaute = double.Parse(ligne[8]);
         }
 
         public override string ToString()

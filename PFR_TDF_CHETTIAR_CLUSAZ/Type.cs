@@ -12,11 +12,11 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
     }
     enum TypeCategorie
     {
-        assise, inversee, bobsleigh
+        assise = (int)'a', inversee = (int)'i', bobsleigh = (int)'b'
     }
     enum TypeBoutique
     {
-        souvenir, barbeAPape, nourriture
+        souvenir = 's', barbeAPapa = 'b', nourriture = 'n'
     }
     enum Grade
     {

@@ -17,7 +17,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         public Boutique(string[] ligne) : base(ligne)
         {
-            
+            marchandise = (TypeBoutique)Enum.Parse(typeof(TypeBoutique), ((int)ligne[6][0]).ToString());
         }
     }
 }

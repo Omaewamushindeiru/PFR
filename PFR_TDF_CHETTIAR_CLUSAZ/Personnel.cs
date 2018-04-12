@@ -14,7 +14,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         private string prenom;
         private TypeSexe sexe;
 
-        public string Fonction { get => fonction; set => fonction = value; }
 
         public Personnel(int matricule, string nom, string prenom, TypeSexe sexe, string fonction)
         {
@@ -24,10 +23,18 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.prenom = prenom;
             this.sexe = sexe;
         }
+        public Personnel(string[] ligne)
+        {
+            this.matricule = int.Parse(ligne[1]);
+            this.nom = ligne[2];
+            this.prenom = ligne[3];
+            this.sexe = (TypeSexe)Enum.Parse(typeof(TypeSexe), ligne[4]);
+            this.fonction = ligne[5];
+        }
 
         public override string ToString()
         {
-            return base.ToString() + " Personnel : Le matricule de ce personnel est :" + matricule + " Il s'appelle " + nom + " " + prenom + " et est de sexe " + sexe + " et sa fonction est " + fonction;
+            return "PERSONNEL ID:" + matricule + " " + nom + " " + prenom + " SEXE:" + sexe + " FONCTION:" + fonction;
         }
 
         public void ChangerFonction(string NouvelleFonction)

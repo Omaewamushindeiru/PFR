@@ -23,6 +23,12 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.Affectation = null;
         }
 
+        public Zombie(string[] ligne) : base(ligne)
+        {
+            this.degreDecomposition = int.Parse(ligne[9]);
+            this.teint = (CouleurZ)Enum.Parse(typeof(CouleurZ), ligne[8]);
+        }
+
         public Zombie(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
         {
 

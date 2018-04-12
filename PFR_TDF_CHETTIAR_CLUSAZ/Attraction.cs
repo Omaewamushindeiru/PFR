@@ -50,7 +50,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 
         public override string ToString()
         {
-            return "MONSTRE ID:" + identifiant + " " + nom + " NbMonstreMIN:" + nbMinMonstre + " SPEC: (" + string.Join(";", spec.ToArray()) + ")";
+            return "|ATTRACTION ID:" + identifiant + "|" + nom + "|NbMonstreMIN:" + nbMinMonstre + "|SPEC: (" + string.Join(";", spec.ToArray()) + ")|";
         }
 
 

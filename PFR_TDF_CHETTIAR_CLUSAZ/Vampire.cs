@@ -8,7 +8,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Vampire : Monstre
     {
-        private float indiceLuminosite;
+        private double indiceLuminosite;
 
         public Vampire(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation, float indiceLuminosite) : base(matricule, nom, prenom, sexe, fonction, cagnotte, affectation)
         {
@@ -18,7 +18,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             this.indiceLuminosite = indiceLuminosite;
             this.Affectation = null;
-
+        }
+        public Vampire(string[] ligne) : base(ligne)
+        {
+            this.indiceLuminosite = double.Parse(ligne[8]);
         }
         public override string ToString()
         {
