@@ -9,18 +9,85 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Parc
     {
-        private List<Attraction> attractions;
-        private List<Personnel> personnel;
-        private List<Salle> salles;
+        private List<Attraction> Attractions;
+        private List<Personnel> Personnel;
 
 
-        public Parc(List<Attraction> attractions, List<Personnel> tousLePersonnel, )
+        public Parc(List<Attraction> attractions, List<Personnel> tousLePersonnel)
         {
-            this.attractions = new List<Attraction>();
-            this.personnel = new List<Personnel>();
+            this.Attractions = new List<Attraction>();
+            this.Personnel = new List<Personnel>();
         }
 
-       public static List<Attraction> ChargerFichierAttraction(string nomDuFichier)
+       static void AffecterAUneAttraction(List<Attraction> listeAttractions,Monstre monMonstre)
+        {
+            for(int i =0; i < listeAttractions.Count(); i++)
+            {
+                if (listeAttractions[i] == monMonstre.Affectation)
+                {
+                    listeAttractions[i].Equipe.Add(monMonstre);
+
+                }
+            }
+        }
+
+       static void ChargerFichier(string nomDuFichier, List<Personnel> personnel)
+        {
+            try
+            {
+                StreamReader fichier = new StreamReader(nomDuFichier);
+
+                string ligne = fichier.ReadLine();
+
+                while (ligne != null)
+                {
+
+
+                    string[] temp = ligne.Split(';');       // to lower ?
+
+                    if (temp[0].ToLower() == "sorcier")
+                    {
+                        personnel.Add(new Sorcier(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], (Grade)Enum.Parse(typeof(Grade), temp[6]), temp[7].Split('-').ToList<string>()));
+                    }
+                    else
+                    {
+
+
+                        if (temp[0].ToLower() == "monstre")
+                        {
+                            personnel.Add(new Monstre(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]),));
+                        }
+                        if (temp[0].ToLower() == "demon")
+                        {
+                            personnel.Add(new Demon(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]), (Attraction)Convert.ChangeType(temp[7], typeof(int)), Int32.Parse(temp[8])));
+                        }
+                        if (temp[0].ToLower() == "fantome")
+                        {
+                            personnel.Add(new Fantome(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]), (Attraction)Convert.ChangeType(temp[7], typeof(int))));
+                        }
+                        if (temp[0].ToLower() == "loupgarou")
+                        {
+                            personnel.Add(new LoupGarou(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]), (Attraction)Convert.ChangeType(temp[7], typeof(int)), Single.Parse(temp[8])));
+                        }
+                        if (temp[0].ToLower() == "vampire")
+                        {
+                            personnel.Add(new Vampire(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]), (Attraction)Convert.ChangeType(temp[7], typeof(int)), Single.Parse(temp[8])));
+                        }
+                        if (temp[0].ToLower() == "zombie")
+                        {
+                            personnel.Add(new Zombie(Int32.Parse(temp[1]), temp[2], temp[3], (TypeSexe)Enum.Parse(typeof(TypeSexe), temp[4]), temp[5], Int32.Parse(temp[6]), (Attraction)Convert.ChangeType(temp[7], typeof(int)), (CouleurZ)Enum.Parse(typeof(CouleurZ), temp[8]), Int32.Parse(temp[9])));
+                        }
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        public List<Attraction> ChargerFichierAttraction(string nomDuFichier)
         {
             List<Attraction> listeAttractions = new List<Attraction>();
             try
@@ -35,19 +102,19 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
                         switch (temp[0])
                         {
                             case "Boutique":
-                                listeAttractions.Add(new Boutique(temp[6], int.Parse(temp[1]), temp[2], int.Parse(temp[3]), false, temp[4]));
+                                listeAttractions.Add(new Boutique(temp, this));
                                 break;
 
                             case "DarkRide":
-                                listeAttractions.Add(new Darkrides(int.Parse(temp[6]), temp[7]=="true", int.Parse(temp[1]), temp[2], int.Parse(temp[3]), false, temp[4]));
+                                listeAttractions.Add(new Darkrides(temp, this));
                                 break;
 
                             case "RollerCoaster":
-                                listeAttractions.Add(new Rollercoaster(
+                                listeAttractions.Add(new Rollercoaster(temp, this));
                                 break;
 
                             case "Spectacles":
-
+                                listeAttractions.Add(new Spectacle(temp, this));
                                 break;
 
                         }
