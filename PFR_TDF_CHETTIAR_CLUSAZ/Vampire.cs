@@ -19,13 +19,24 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.indiceLuminosite = indiceLuminosite;
             this.Affectation = null;
         }
-        public Vampire(string[] ligne) : base(ligne)
+        public Vampire(string[] ligne, Parc parc) : base(ligne, parc)
         {
             this.indiceLuminosite = double.Parse(ligne[8]);
         }
+
         public override string ToString()
         {
-            return base.ToString() + " Il est de type Vampire et son indice de luminosite est de " + indiceLuminosite;
+            return base.ToString() + " VAMPIRE LUM:" + indiceLuminosite;
         }
+        public override string ToCVS()
+        {
+            return "Vampire;"+base.ToCVS()+";"+indiceLuminosite;
+        }
+
+        public void ChangerLuminosite(double indice)
+        {
+            indiceLuminosite = indice;
+        }
+
     }
 }

@@ -82,25 +82,25 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
                             ListePersonnel.Add(new Sorcier(temp));
                             break;
                         case "monstre":
-                            ListePersonnel.Add(new Monstre(temp));
+                            ListePersonnel.Add(new Monstre(temp, this));
                             break;
 
                         case "zombie":
-                            ListePersonnel.Add(new Zombie(temp));
+                            ListePersonnel.Add(new Zombie(temp, this));
                             break;
 
                         case "fantome":
-                            ListePersonnel.Add(new Fantome(temp));
+                            ListePersonnel.Add(new Fantome(temp, this));
                             break;
 
                         case "vampire":
-                            ListePersonnel.Add(new Vampire(temp));
+                            ListePersonnel.Add(new Vampire(temp, this));
                             break;
                         case "loupgarou":
-                            ListePersonnel.Add(new LoupGarou(temp));
+                            ListePersonnel.Add(new LoupGarou(temp, this));
                             break;
                         case "demon":
-                            ListePersonnel.Add(new Demon(temp));
+                            ListePersonnel.Add(new Demon(temp, this));
                             break;
                     }
 
@@ -152,7 +152,32 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             {
                 Console.WriteLine(e.Message);
             }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return listeAttractions;
+        }
+
+        public void WriteFile(string filename)
+        {
+            List<string> file = new List<string>();
+            foreach(Attraction a in attractions)
+            {
+                file.Add(a.ToCVS());
+            }
+            string temp;
+            foreach(Personnel p in personnel)
+            {
+                temp = p.ToCVS(); 
+                if (!(p is Zombie || p is Fantome || p is LoupGarou || p is Vampire || p is Demon || p is Sorcier)) temp = "Monstre;" + temp;
+                file.Add(temp);
+            }
+            //if (!File.Exists("save.csv"))
+            //{
+                // Create a file to write to.
+                File.WriteAllLines(filename, file.ToArray());
+            //}
         }
 
         public delegate bool FiltreAttraction(Attraction attraction);
@@ -184,63 +209,51 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             return true;
         }
+        public static FiltrePersonnel OnlyMonsterType(Type t)
+        {
+            FiltrePersonnel filtre = delegate (Personnel pers)
+            {
+                return t.Equals(pers.GetType());
+            };
+            return filtre;
+        }
         public static bool OnlySorcier(Personnel sorcier)
         {
-            if (sorcier is Sorcier)
-            {
-                return true;
-            }
-            else { return false; }
+            return sorcier is Sorcier;
         }
         public static bool OnlyMonstre(Personnel monstre)
         {
-            if(monstre is Monstre)
-            {
-                return true;
-            }
-            else { return false; }
+            return monstre is Monstre;
         }
         public static bool OnlyDemon(Personnel demon)
         {
-            if (demon is Demon)
-            {
-                return true;
-            }
-            else { return false; }
+            return demon is Demon;
         }
         public static bool OnlyFantome(Personnel fantome)
         {
-            if (fantome is Fantome)
-            {
-                return true;
-            }
-            else { return false; }
+            return fantome is Fantome;
         }
         public static bool OnlyLoupGarou(Personnel loupGarou)
         {
-            if (loupGarou is LoupGarou)
-            {
-                return true;
-            }
-            else { return false; }
+            return loupGarou is LoupGarou;
         }
         public static bool OnlyVampire(Personnel vampire)
         {
-            if (vampire is Vampire)
-            {
-                return true;
-            }
-            else { return false; }
+            return vampire is Vampire;
         }
         public static bool OnlyZombie(Personnel zombie)
         {
-            if (zombie is Zombie)
-            {
-                return true;
-            }
-            else { return false; }
+            return zombie is Zombie;
         }
-
+        public static FiltrePersonnel CagnotteOver(int cagnotte, FiltrePersonnel filtre)
+        {
+            FiltrePersonnel newFiltre = delegate (Personnel pers)
+            {
+                if (filtre(pers) && pers is Monstre) return (pers as Monstre).Cagnotte >= cagnotte;
+                return false;
+            };
+            return newFiltre;
+        }
 
     }
 

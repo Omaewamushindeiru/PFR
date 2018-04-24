@@ -22,5 +22,9 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             duree = TimeSpan.Parse(ligne[6]);
             estEnVehicule = (ligne[7] == "true");
         }
+        public override string ToCVS()
+        {
+            return "Darkrides;"+base.ToCVS()+duree.ToString()+";"+estEnVehicule+";";
+        }
     }
 }

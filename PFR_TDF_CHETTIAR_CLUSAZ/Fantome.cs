@@ -16,9 +16,14 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             this.Affectation = null;
         }
-        public Fantome(string [] ligne) : base(ligne)
+        public Fantome(string [] ligne, Parc parc) : base(ligne, parc)
         {
 
+        }
+
+        public override string ToCVS()
+        {
+            return "Fantome;" + base.ToCVS();
         }
 
         public override string ToString()

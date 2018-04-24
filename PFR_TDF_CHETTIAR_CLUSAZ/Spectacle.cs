@@ -29,5 +29,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             }
         }
 
+        public override string ToCVS()
+        {
+            return "Spectacle;" + base.ToCVS() + salle.ToCVS() + horraire.ToString() +";";
+        }
+
     }
 }

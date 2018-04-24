@@ -8,12 +8,17 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Program
     {
-        static void Main(string[] args)
+        static void scenario()
         {
-            Console.WriteLine("test");
-            Parc p = new Parc("Listing.csv");
+            Parc p = new Parc("../../../Listing.csv");
             p.AfficherAttractionsConsole(Parc.NoFilter);
             p.AfficherPersonnelConsole(Parc.NoFilter);
+            p.WriteFile("../../../save.csv");
+        }
+
+        static void Main(string[] args)
+        {
+            scenario();
             Console.ReadKey();
         }
     }

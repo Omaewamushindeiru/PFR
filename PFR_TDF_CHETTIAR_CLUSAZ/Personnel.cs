@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
-    class Personnel
+    abstract class Personnel
     {
         #region attribus
         private string fonction;
@@ -38,6 +38,19 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         public override string ToString()
         {
             return "PERSONNEL ID:" + matricule + " " + nom + " " + prenom + " SEXE:" + sexe + " FONCTION:" + fonction;
+        }
+        virtual public string ToCVS()
+        {
+            return matricule + ";" + nom + ";" + prenom + ";" + sexe + ";" + fonction + ";";
+        }
+
+        static public int TriZombieDecompo(Personnel p1, Personnel p2)
+        {
+            int result = 0;
+            if (p1 is Zombie && p2 is Zombie) result = (p1 as Zombie).DegreDecomposition.CompareTo((p2 as Zombie).DegreDecomposition);
+            else if (p1 is Zombie) result = 1;
+            else if (p2 is Zombie) result = -1;
+            return result;
         }
 
         public void ChangerFonction(string NouvelleFonction)

@@ -20,7 +20,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.Affectation = null;
 
         }
-        public LoupGarou(string[] ligne): base(ligne)
+        public LoupGarou(string[] ligne, Parc parc): base(ligne,parc)
         {
             this.indiceCruaute = double.Parse(ligne[8]);
         }
@@ -28,6 +28,15 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         public override string ToString()
         {
             return base.ToString() + " Il est de type LoupGarou et son indice de cruaute est de " + indiceCruaute;
+        }
+        public override string ToCVS()
+        {
+            return "LoupGarou;" + base.ToCVS() + indiceCruaute + ";";
+        }
+
+        public void ChangerIndiceCruaute(double indice)
+        {
+            indiceCruaute = indice;
         }
 
     }

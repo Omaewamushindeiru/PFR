@@ -17,9 +17,19 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             set { affectation = value; }
         }
 
+        public int Cagnotte
+        {
+            get
+            {
+                return cagnotte;
+            }
+
+        }
+
         public Monstre(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte, Attraction affectation) : base(matricule, nom, prenom, sexe, fonction)
         {
             this.affectation = affectation;
+            affectation.Equipe.Add(this);
             this.cagnotte = cagnotte;
         }
         public Monstre(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte) : base(matricule, nom, prenom, sexe, fonction)
@@ -27,22 +37,32 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.cagnotte = cagnotte;
             this.affectation = null;
         }
-        public Monstre(string[] ligne) : base(ligne)
+        public Monstre(string[] ligne, Parc parc) : base(ligne)
         {
-            this.cagnotte = int.Parse(ligne[6]);
+            int.TryParse(ligne[6], out cagnotte);
+            int attraction = 0;
+            if(int.TryParse(ligne[7], out attraction)) Console.WriteLine(Affecter(attraction, parc));
         }
 
         public bool Affecter(int idAttraction, Parc parc)
         {
-            for (int i = 0; i < parc.Attractions.Count(); i++) ;
-            foreach (Attraction att in parc.Attractions)
-                if ((att.Identifiant == idAttraction))
-                    if (this.isOfSpec(att))
+            if (!isAffected())
+                foreach (Attraction att in parc.Attractions)
+                {
+                    Console.WriteLine("b");
+
+                    if ((att.Identifiant == idAttraction))
                     {
-                        this.affectation = att;
-                        att.Equipe.Add(this);
-                        return true;
+                        Console.WriteLine("a");
+                        if (this.isOfSpec(att))
+                        {
+                            Console.WriteLine("test");
+                            this.affectation = att;
+                            att.Equipe.Add(this);
+                            return true;
+                        }
                     }
+                }
             return false;
         }
         public bool Desaffecter()
@@ -55,9 +75,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             }
             return false;
         }
-
+        
         public bool isOfSpec(Attraction attraction)
         {
+            //Console.WriteLine("ets");
             foreach (string type in attraction.Spec)
             {
                 switch (type)
@@ -85,42 +106,32 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             }
             return true;
         }
-
         public bool isAffected()
         {
-            return affectation == null;
+            return affectation != null;
         }
-
-
 
         public override string ToString()
         {
-            return base.ToString() + " MONSTRE AFFECTATION:" + affectation + " CACGNOTTE:" + cagnotte;
+            return base.ToString() + " MONSTRE AFFECTATION:(" + affectation + ") CACGNOTTE:" + cagnotte;
+        }
+        public override string ToCVS()
+        {
+            try { return base.ToCVS() + cagnotte + ";" + Affectation.Identifiant + ";"; }
+            catch (NullReferenceException) { return base.ToCVS() + cagnotte + ";;"; }
         }
 
-        public void ChangerCagnotte(int valeur, Parc p)
+        public void ChangerCagnotte( int valeur )
         {
             cagnotte += valeur;
-            int idBoutique;
-            if (cagnotte < 50)
+            
+            if( cagnotte < 50)
             {
-                Desaffecter();
-                foreach (Boutique bou in p.Attractions)
-                {
-                    if (bou.Marchandise == TypeBoutique.barbeAPapa)
-                    {
-                        idBoutique = bou.Identifiant;
-                        Affecter(idBoutique, p);
-                        break;
-                    }
-                }
+               // fonction affecter désaffecter
             }
             if (cagnotte > 500)
             {
-                if (affectation.NbMinMonstre < affectation.Equipe.Count)
-                {
-                    Desaffecter();
-                }
+                //checker si il y a assez de monde sur l'attraction
             }
         }
     }

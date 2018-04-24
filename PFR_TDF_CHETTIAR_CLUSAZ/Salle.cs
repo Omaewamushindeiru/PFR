@@ -20,5 +20,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             this.disponible = disponible;
             this.spectacle = spectacle;
         }
+
+        public string ToCVS()
+        {
+            return nom + ";" + capacite + ";";
+        }
     }
 }

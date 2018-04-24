@@ -14,20 +14,29 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             this.force = force;
         }
-
         public Demon(int matricule, string nom, string prenom, TypeSexe sexe, string fonction, int cagnotte,int force) : base(matricule, nom, prenom, sexe, fonction, cagnotte)
         {
             this.force = force;
             this.Affectation = null;
         }
-        public Demon(string[] ligne):base(ligne)
+        public Demon(string[] ligne, Parc parc):base(ligne, parc)
         {
-            this.force = int.Parse(ligne[8]);
+            int.TryParse(ligne[8],out force);
         }
 
         public override string ToString()
         {
-            return base.ToString() + " Il est de type Demon est sa force est de " + force;
+            return base.ToString() + " DEMON FORCE: " + force;
         }
+        public override string ToCVS()
+        {
+            return "Demon;" + base.ToCVS() + ";" + force + ";";
+        }
+
+        public void ChangerForce(int valeur)
+        {
+            force = valeur;
+        }
+
     }
 }

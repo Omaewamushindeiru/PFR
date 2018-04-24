@@ -9,7 +9,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
 {
     class Attraction
     {
-        #region attribus
+        #region attribut
         private int identifiant;
         private string nom;
 
@@ -38,13 +38,6 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             get
             {
                 return spec;
-            }
-        }
-        public int NbMinMonstre
-        {
-            get
-            {
-                return nbMinMonstre;
             }
         }
         #endregion
@@ -78,6 +71,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             return "|ATTRACTION ID:" + identifiant + "|" + nom + "|NbMonstreMIN:" + nbMinMonstre + "|SPEC: (" + string.Join(";", spec.ToArray()) + ")|";
         }
+        public virtual string ToCVS()
+        {
+            return identifiant + ";" + nom + ";" + nbMinMonstre + ";;" + string.Join(" ", spec) + ";";
+        }
 
         public void AddSpec(string type)
         {
@@ -87,5 +84,17 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
         {
             spec.Remove(type);
         }
+
+        public void StartMaintenance()
+        {
+            maintenance = new Maintenance();
+            ouvert = false;
+        }
+        public void EndMaintenance()
+        {
+            maintenance = null;
+            ouvert = false;
+        }
+
     }
 }

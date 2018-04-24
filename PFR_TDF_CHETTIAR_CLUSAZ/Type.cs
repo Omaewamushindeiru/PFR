@@ -20,7 +20,7 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
     }
     enum Grade
     {
-        novice, mega, giga, strata
+        novice, mega, giga, strata, inconnu
     }
     enum CouleurZ
     {

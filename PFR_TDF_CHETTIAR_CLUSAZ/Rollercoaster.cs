@@ -26,5 +26,10 @@ namespace PFR_TDF_CHETTIAR_CLUSAZ
             ageMin = int.Parse(ligne[7]);
         }
 
+        public override string ToCVS()
+        {
+            return "Roallercoaster;" + base.ToCVS() + categorie.ToString() + ";" + ageMin + ";"+tailleMin+";";
+        }
+
     }
 }
